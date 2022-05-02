@@ -103,6 +103,9 @@ type Props = {
      * Focus the code editor on component mount.
      */
     autoFocus?: boolean;
+
+    value: string
+    setValue: (v: any) => void
 };
 
 type PropsWithForwardRef = Props & {
@@ -126,6 +129,8 @@ const CodeEditor = (props: PropsWithForwardRef): JSX.Element => {
         readOnly = false,
         autoFocus = true,
         forwardedRef,
+        value,
+        setValue
     } = props;
 
     const {
@@ -144,7 +149,7 @@ const CodeEditor = (props: PropsWithForwardRef): JSX.Element => {
         padding = 16,
     } = addedStyle;
 
-    const [value, setValue] = useState<string>(initialValue);
+    //const [value, setValue] = useState<string>(initialValue);
     const highlighterRef = useRef<ScrollView>(null);
     const inputRef = useRef<TextInput>(null);
     const inputSelection = useRef<TextInputSelectionType>({ start: 0, end: 0 });
